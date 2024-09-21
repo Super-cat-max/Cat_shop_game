@@ -1,0 +1,102 @@
+{
+  "current_date": "2049-09-01T00:00:00",
+  "cats": [
+    {
+      "name": "Lord Big Duwaca",
+      "color": "Brown",
+      "pattern": "Tabby",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 1.9670507748537558
+        },
+        {
+          "trait": "Energetic",
+          "value": 3.9617690995394743
+        },
+        {
+          "trait": "Lazy",
+          "value": 8.101760855056586
+        },
+        {
+          "trait": "Curious",
+          "value": 2.056302368902223
+        },
+        {
+          "trait": "Friendly",
+          "value": 7.857512510652984
+        }
+      ],
+      "age": 29,
+      "is_female": false,
+      "parents": []
+    },
+    {
+      "name": "Sir Wahec the Wise",
+      "color": "Brown",
+      "pattern": "Solid",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 6.891713897384375
+        },
+        {
+          "trait": "Energetic",
+          "value": 5.214184737083515
+        },
+        {
+          "trait": "Lazy",
+          "value": 2.9549322515420005
+        },
+        {
+          "trait": "Curious",
+          "value": 1.082414538566937
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.809792223052524
+        }
+      ],
+      "age": 17,
+      "is_female": false,
+      "parents": []
+    },
+    {
+      "name": "Sir Mrs Cuyidir",
+      "color": "Brown",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.77049102533316
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.203053818430684
+        },
+        {
+          "trait": "Lazy",
+          "value": 2.2904562764322867
+        },
+        {
+          "trait": "Curious",
+          "value": 5.926792350362169
+        },
+        {
+          "trait": "Friendly",
+          "value": 5.949457579338811
+        }
+      ],
+      "age": 18,
+      "is_female": false,
+      "parents": []
+    }
+  ],
+  "money": Infinity,
+  "cat_food": 555537405,
+  "cat_food_consumption_rate": 10,
+  "food_shortage_months": 0,
+  "cat_food_cost": 2,
+  "personality_change_rate": 0.1,
+  "treatment_cost": 100
+}

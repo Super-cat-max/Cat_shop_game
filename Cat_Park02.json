@@ -1,0 +1,1752 @@
+{
+  "cats": [
+    {
+      "name": "Professor Fluffy",
+      "color": "Orange",
+      "pattern": "Calico",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.123513847491738
+        },
+        {
+          "trait": "Energetic",
+          "value": 8.971068300892481
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.074718897017551
+        },
+        {
+          "trait": "Curious",
+          "value": 9.071987097498456
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.163733684885065
+        }
+      ],
+      "age": 4,
+      "is_female": true,
+      "parents": []
+    },
+    {
+      "name": "Wekovix",
+      "color": "White",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 9.02063700641073
+        },
+        {
+          "trait": "Energetic",
+          "value": 8.085293958103806
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.011959099611654
+        },
+        {
+          "trait": "Curious",
+          "value": 7.140690186748623
+        },
+        {
+          "trait": "Friendly",
+          "value": 1.0611465544790815
+        }
+      ],
+      "age": 4,
+      "is_female": true,
+      "parents": []
+    },
+    {
+      "name": "Sir Smokey",
+      "color": "Gray",
+      "pattern": "Tabby",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 4.967179663334258
+        },
+        {
+          "trait": "Energetic",
+          "value": 3.9814894575473745
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.131814044448681
+        },
+        {
+          "trait": "Curious",
+          "value": 6.88511848191729
+        },
+        {
+          "trait": "Friendly",
+          "value": 9.128894346793208
+        }
+      ],
+      "age": 15,
+      "is_female": true,
+      "parents": []
+    },
+    {
+      "name": "Cog the Brave",
+      "color": "Brown",
+      "pattern": "Solid",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 5.036474094171398
+        },
+        {
+          "trait": "Energetic",
+          "value": 1
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.0766828672812725
+        },
+        {
+          "trait": "Curious",
+          "value": 9.943687326005142
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.871488389863686
+        }
+      ],
+      "age": 10,
+      "is_female": true,
+      "parents": []
+    },
+    {
+      "name": "Qubuqik the Great",
+      "color": "White",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.899802727946875
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.037859988535177
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.081141582677145
+        },
+        {
+          "trait": "Curious",
+          "value": 9.05041480210194
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.199849546095843
+        }
+      ],
+      "age": 5,
+      "is_female": false,
+      "parents": []
+    },
+    {
+      "name": "Rira",
+      "color": "Gray",
+      "pattern": "Tortoiseshell",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.91196817224525
+        },
+        {
+          "trait": "Energetic",
+          "value": 4.990505139272679
+        },
+        {
+          "trait": "Lazy",
+          "value": 3.0583023205839344
+        },
+        {
+          "trait": "Curious",
+          "value": 3.8290706387828304
+        },
+        {
+          "trait": "Friendly",
+          "value": 1.8874777312609712
+        }
+      ],
+      "age": 15,
+      "is_female": false,
+      "parents": []
+    },
+    {
+      "name": "Qidah",
+      "color": "Black",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 2.813870460761664
+        },
+        {
+          "trait": "Energetic",
+          "value": 4.003392538469536
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.848026824416948
+        },
+        {
+          "trait": "Curious",
+          "value": 8.028538839450961
+        },
+        {
+          "trait": "Friendly",
+          "value": 2.9238906782139504
+        }
+      ],
+      "age": 13,
+      "is_female": true,
+      "parents": []
+    },
+    {
+      "name": "Young Smokey",
+      "color": "Brown",
+      "pattern": "Tortoiseshell",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.99152040825975
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.029800495837597
+        },
+        {
+          "trait": "Lazy",
+          "value": 3.98399670363829
+        },
+        {
+          "trait": "Curious",
+          "value": 7.906813944034791
+        },
+        {
+          "trait": "Friendly",
+          "value": 7.922631722441995
+        }
+      ],
+      "age": 18,
+      "is_female": false,
+      "parents": []
+    },
+    {
+      "name": "Mochi the Wise",
+      "color": "Gray",
+      "pattern": "Tortoiseshell",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.103286922855249
+        },
+        {
+          "trait": "Energetic",
+          "value": 6.028938650870043
+        },
+        {
+          "trait": "Lazy",
+          "value": 9.947791679205901
+        },
+        {
+          "trait": "Curious",
+          "value": 5.089129593358781
+        },
+        {
+          "trait": "Friendly",
+          "value": 1.1061876743196541
+        }
+      ],
+      "age": 8,
+      "is_female": false,
+      "parents": []
+    },
+    {
+      "name": "Yivudi",
+      "color": "Orange",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 9.001455827479669
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.645236823167718
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.546874567859349
+        },
+        {
+          "trait": "Curious",
+          "value": 8.768035928602785
+        },
+        {
+          "trait": "Friendly",
+          "value": 7.860506679876993
+        }
+      ],
+      "age": 2,
+      "is_female": true,
+      "parents": [
+        "Professor Fluffy",
+        "Qubuqik the Great"
+      ]
+    },
+    {
+      "name": "Toqelul",
+      "color": "White",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 9.068821513832564
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.981696623443523
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.083821768996995
+        },
+        {
+          "trait": "Curious",
+          "value": 8.104645878609967
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.820996968368885
+        }
+      ],
+      "age": 2,
+      "is_female": false,
+      "parents": [
+        "Wekovix",
+        "Qubuqik the Great"
+      ]
+    },
+    {
+      "name": "Smokey",
+      "color": "Brown",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.377770457185065
+        },
+        {
+          "trait": "Energetic",
+          "value": 3.903007756896746
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.753895747282581
+        },
+        {
+          "trait": "Curious",
+          "value": 9.2495041428758
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.627941295909848
+        }
+      ],
+      "age": 2,
+      "is_female": false,
+      "parents": [
+        "Cog the Brave",
+        "Qubuqik the Great"
+      ]
+    },
+    {
+      "name": "Xudud the Wise",
+      "color": "White",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 9.105300091293005
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.648480126411024
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.561224448205489
+        },
+        {
+          "trait": "Curious",
+          "value": 8.081140189839706
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.167535906838815
+        }
+      ],
+      "age": 2,
+      "is_female": true,
+      "parents": [
+        "Qubuqik the Great",
+        "Wekovix"
+      ]
+    },
+    {
+      "name": "Little Neko",
+      "color": "Gray",
+      "pattern": "Tortoiseshell",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.193452486229693
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.55141137968605
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.63799510878127
+        },
+        {
+          "trait": "Curious",
+          "value": 6.773562145257966
+        },
+        {
+          "trait": "Friendly",
+          "value": 5.203664360319463
+        }
+      ],
+      "age": 2,
+      "is_female": false,
+      "parents": [
+        "Mochi the Wise",
+        "Professor Fluffy"
+      ]
+    },
+    {
+      "name": "Gejoz Ziy the Cute",
+      "color": "Orange",
+      "pattern": "Calico",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.863164444939994
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.7543099722320035
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.4859298936015675
+        },
+        {
+          "trait": "Curious",
+          "value": 9.197675897474548
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.525691788716781
+        }
+      ],
+      "age": 1,
+      "is_female": true,
+      "parents": [
+        "Professor Fluffy",
+        "Qubuqik the Great"
+      ]
+    },
+    {
+      "name": "Goqiyuv",
+      "color": "White",
+      "pattern": "Tortoiseshell",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.159476319733677
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.598944144508802
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.7453059548728005
+        },
+        {
+          "trait": "Curious",
+          "value": 5.792135912178871
+        },
+        {
+          "trait": "Friendly",
+          "value": 1
+        }
+      ],
+      "age": 1,
+      "is_female": true,
+      "parents": [
+        "Wekovix",
+        "Mochi the Wise"
+      ]
+    },
+    {
+      "name": "Zofu the Cute",
+      "color": "Brown",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 6.597818187915758
+        },
+        {
+          "trait": "Energetic",
+          "value": 3.6205930397520008
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.3128835267156145
+        },
+        {
+          "trait": "Curious",
+          "value": 9.138341196352957
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.523000431306764
+        }
+      ],
+      "age": 1,
+      "is_female": false,
+      "parents": [
+        "Cog the Brave",
+        "Qubuqik the Great"
+      ]
+    },
+    {
+      "name": "Cog the Brave",
+      "color": "White",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.899251480583452
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.284875608355591
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.673509924254967
+        },
+        {
+          "trait": "Curious",
+          "value": 7.618055396182995
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.481383625824958
+        }
+      ],
+      "age": 1,
+      "is_female": true,
+      "parents": [
+        "Qubuqik the Great",
+        "Wekovix"
+      ]
+    },
+    {
+      "name": "Gejoz Ziy the Cute",
+      "color": "White",
+      "pattern": "Tortoiseshell",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.086598998931667
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.576187458323762
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.615737773205629
+        },
+        {
+          "trait": "Curious",
+          "value": 6.467686022957538
+        },
+        {
+          "trait": "Friendly",
+          "value": 1.2849767729489505
+        }
+      ],
+      "age": 1,
+      "is_female": false,
+      "parents": [
+        "Mochi the Wise",
+        "Wekovix"
+      ]
+    },
+    {
+      "name": "Old Whiskers the Wise",
+      "color": "Gray",
+      "pattern": "Calico",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.826134626405045
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.012827510495907
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.785157385927911
+        },
+        {
+          "trait": "Curious",
+          "value": 7.503956951323786
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.824299609959375
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Professor Fluffy",
+        "Mochi the Wise"
+      ]
+    },
+    {
+      "name": "Qubuqik the the Cute",
+      "color": "White",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 9.184618293730919
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.634635505119011
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.5123812784672594
+        },
+        {
+          "trait": "Curious",
+          "value": 8.18532266338433
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.240554184068805
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Wekovix",
+        "Qubuqik the Great"
+      ]
+    },
+    {
+      "name": "Little Ziy Whiskers the Brave",
+      "color": "White",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 6.698648645821182
+        },
+        {
+          "trait": "Energetic",
+          "value": 4.138400536542466
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.260796856847455
+        },
+        {
+          "trait": "Curious",
+          "value": 9.129609908704639
+        },
+        {
+          "trait": "Friendly",
+          "value": 7.329638505846514
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Cog the Brave",
+        "Toqelul"
+      ]
+    },
+    {
+      "name": "Lady Tiger III",
+      "color": "White",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 9.337265098174056
+        },
+        {
+          "trait": "Energetic",
+          "value": 8.025462164903304
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.277365225286299
+        },
+        {
+          "trait": "Curious",
+          "value": 7.839448538406726
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.9071326109688505
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Qubuqik the Great",
+        "Wekovix"
+      ]
+    },
+    {
+      "name": "Little Ziy Cute",
+      "color": "Gray",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.388965496802738
+        },
+        {
+          "trait": "Energetic",
+          "value": 6.396745438529373
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.466743168008108
+        },
+        {
+          "trait": "Curious",
+          "value": 6.660699654534182
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.906693689863018
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Mochi the Wise",
+        "Yivudi"
+      ]
+    },
+    {
+      "name": "Buw the Jr",
+      "color": "White",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 9.367471947589344
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.051424353357904
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.232782964757689
+        },
+        {
+          "trait": "Curious",
+          "value": 9.190607504636056
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.05428908329808
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Yivudi",
+        "Qubuqik the Great"
+      ]
+    },
+    {
+      "name": "Old Wise",
+      "color": "White",
+      "pattern": "Calico",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.242907806418968
+        },
+        {
+          "trait": "Energetic",
+          "value": 8.43950826655741
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.511384231228824
+        },
+        {
+          "trait": "Curious",
+          "value": 8.840062346403142
+        },
+        {
+          "trait": "Friendly",
+          "value": 6.564951747197503
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Toqelul",
+        "Professor Fluffy"
+      ]
+    },
+    {
+      "name": "Gejoz the Brave",
+      "color": "Brown",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.982682012969765
+        },
+        {
+          "trait": "Energetic",
+          "value": 5.360954524442503
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.755141575211398
+        },
+        {
+          "trait": "Curious",
+          "value": 8.65923505504656
+        },
+        {
+          "trait": "Friendly",
+          "value": 6.144982116039359
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Smokey",
+        "Xudud the Wise"
+      ]
+    },
+    {
+      "name": "Little Ziy the Cute",
+      "color": "White",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.609840357248018
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.380697151166519
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.120207160735205
+        },
+        {
+          "trait": "Curious",
+          "value": 7.9450742204662665
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.014760049931289
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Xudud the Wise",
+        "Toqelul"
+      ]
+    },
+    {
+      "name": "Buw the Jr",
+      "color": "Brown",
+      "pattern": "Solid",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 6.165984224966328
+        },
+        {
+          "trait": "Energetic",
+          "value": 4.460455976198591
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.63089497809238
+        },
+        {
+          "trait": "Curious",
+          "value": 8.308345805171312
+        },
+        {
+          "trait": "Friendly",
+          "value": 6.786685785016058
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Little Neko",
+        "Cog the Brave"
+      ]
+    },
+    {
+      "name": "Old Fap the Wise",
+      "color": "Brown",
+      "pattern": "Calico",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 4
+        },
+        {
+          "trait": "Energetic",
+          "value": 9
+        },
+        {
+          "trait": "Lazy",
+          "value": 8
+        },
+        {
+          "trait": "Curious",
+          "value": 1
+        },
+        {
+          "trait": "Friendly",
+          "value": 6
+        }
+      ],
+      "age": 12,
+      "is_female": false,
+      "parents": []
+    },
+    {
+      "name": "Lady Fap the the Fap the Wise",
+      "color": "White",
+      "pattern": "Tabby",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 2
+        },
+        {
+          "trait": "Energetic",
+          "value": 1
+        },
+        {
+          "trait": "Lazy",
+          "value": 3
+        },
+        {
+          "trait": "Curious",
+          "value": 1
+        },
+        {
+          "trait": "Friendly",
+          "value": 7
+        }
+      ],
+      "age": 3,
+      "is_female": false,
+      "parents": []
+    },
+    {
+      "name": "Vodocoli Fap Brave",
+      "color": "White",
+      "pattern": "Tabby",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 2
+        },
+        {
+          "trait": "Energetic",
+          "value": 10
+        },
+        {
+          "trait": "Lazy",
+          "value": 2
+        },
+        {
+          "trait": "Curious",
+          "value": 8
+        },
+        {
+          "trait": "Friendly",
+          "value": 2
+        }
+      ],
+      "age": 12,
+      "is_female": false,
+      "parents": []
+    },
+    {
+      "name": "Old Whiskers the Brave",
+      "color": "Orange",
+      "pattern": "Calico",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.5973866103866685
+        },
+        {
+          "trait": "Energetic",
+          "value": 6.223518911164135
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.486905571608944
+        },
+        {
+          "trait": "Curious",
+          "value": 9.077823129307117
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.228794701307761
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Professor Fluffy",
+        "Smokey"
+      ]
+    },
+    {
+      "name": "Old Whiskers the Nuzu the Brave",
+      "color": "White",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.687109758231406
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.123011488203209
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.116182132506664
+        },
+        {
+          "trait": "Curious",
+          "value": 8.418789864095286
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.508646543139451
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Wekovix",
+        "Qubuqik the Great"
+      ]
+    },
+    {
+      "name": "Old Smokey the Brave",
+      "color": "Brown",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.152414756704641
+        },
+        {
+          "trait": "Energetic",
+          "value": 4.076888743986412
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.791641216009646
+        },
+        {
+          "trait": "Curious",
+          "value": 9.407170744515195
+        },
+        {
+          "trait": "Friendly",
+          "value": 7.058603844394988
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Cog the Brave",
+        "Toqelul"
+      ]
+    },
+    {
+      "name": "Fluffy the the Cute",
+      "color": "White",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 9.361538098546353
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.091341835552846
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.422975124910488
+        },
+        {
+          "trait": "Curious",
+          "value": 8.629082951330643
+        },
+        {
+          "trait": "Friendly",
+          "value": 6.479031677743456
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Qubuqik the Great",
+        "Xudud the Wise"
+      ]
+    },
+    {
+      "name": "Old Whiskers Kasukis Brave",
+      "color": "Orange",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.730319254388764
+        },
+        {
+          "trait": "Energetic",
+          "value": 6.498177173007809
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.469703174220665
+        },
+        {
+          "trait": "Curious",
+          "value": 6.95472805523259
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.396318494735116
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Mochi the Wise",
+        "Yivudi"
+      ]
+    },
+    {
+      "name": "Old Whiskers the the Brave",
+      "color": "Gray",
+      "pattern": "Tortoiseshell",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.34673315530005
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.739104486182719
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.267224425083452
+        },
+        {
+          "trait": "Curious",
+          "value": 7.864599812015022
+        },
+        {
+          "trait": "Friendly",
+          "value": 6.280678116645982
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Yivudi",
+        "Little Neko"
+      ]
+    },
+    {
+      "name": "Old Whiskers the Fap the Wise",
+      "color": "White",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 9.44987026865311
+        },
+        {
+          "trait": "Energetic",
+          "value": 8.239499997281385
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.315424905493201
+        },
+        {
+          "trait": "Curious",
+          "value": 7.897992999934958
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.716818344893186
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Toqelul",
+        "Xudud the Wise"
+      ]
+    },
+    {
+      "name": "Old Jan the Wise",
+      "color": "Orange",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.85267192665173
+        },
+        {
+          "trait": "Energetic",
+          "value": 5.794367279605487
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.088308997509236
+        },
+        {
+          "trait": "Curious",
+          "value": 9.279702411198949
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.302425525713103
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Smokey",
+        "Yivudi"
+      ]
+    },
+    {
+      "name": "Little Ziy Whiskers the Brave",
+      "color": "White",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.838726535588201
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.733241281015346
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.5885915131425925
+        },
+        {
+          "trait": "Curious",
+          "value": 7.160983244122951
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.2913528170983675
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Xudud the Wise",
+        "Little Neko"
+      ]
+    },
+    {
+      "name": "Old Brave",
+      "color": "Orange",
+      "pattern": "Calico",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.5794123966277755
+        },
+        {
+          "trait": "Energetic",
+          "value": 8.383017805723055
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.892509287121626
+        },
+        {
+          "trait": "Curious",
+          "value": 8.256975548089365
+        },
+        {
+          "trait": "Friendly",
+          "value": 6.594469517091014
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Little Neko",
+        "Professor Fluffy"
+      ]
+    },
+    {
+      "name": "Old the Cute",
+      "color": "White",
+      "pattern": "Tabby",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 5.134456208210373
+        },
+        {
+          "trait": "Energetic",
+          "value": 4.236858381594249
+        },
+        {
+          "trait": "Lazy",
+          "value": 4.359874832893511
+        },
+        {
+          "trait": "Curious",
+          "value": 4.611223703165587
+        },
+        {
+          "trait": "Friendly",
+          "value": 5.859520629441861
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Lady Fap the the Fap the Wise",
+        "Xudud the Wise"
+      ]
+    },
+    {
+      "name": "Little Ziy the the the Cute",
+      "color": "White",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.664473373952546
+        },
+        {
+          "trait": "Energetic",
+          "value": 8.61194712021038
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.271230050807795
+        },
+        {
+          "trait": "Curious",
+          "value": 8.753514921768915
+        },
+        {
+          "trait": "Friendly",
+          "value": 6.722256846640448
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Professor Fluffy",
+        "Toqelul"
+      ]
+    },
+    {
+      "name": "Old the Brave",
+      "color": "White",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 9.314514128671584
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.0798619010334045
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.548271857594654
+        },
+        {
+          "trait": "Curious",
+          "value": 7.688899450042173
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.133970455463814
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Wekovix",
+        "Qubuqik the Great"
+      ]
+    },
+    {
+      "name": "Old Fap the Wise",
+      "color": "White",
+      "pattern": "Solid",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 3.4908066660870256
+        },
+        {
+          "trait": "Energetic",
+          "value": 1.2389807848687409
+        },
+        {
+          "trait": "Lazy",
+          "value": 3.9524713048386895
+        },
+        {
+          "trait": "Curious",
+          "value": 5.962749194856611
+        },
+        {
+          "trait": "Friendly",
+          "value": 7.552453456706037
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Cog the Brave",
+        "Lady Fap the the Fap the Wise"
+      ]
+    },
+    {
+      "name": "Little Ziy the Cute",
+      "color": "White",
+      "pattern": "Calico",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.092186590760903
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.928356071791258
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.017251148819298
+        },
+        {
+          "trait": "Curious",
+          "value": 8.826635763106355
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.511625125143835
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Qubuqik the Great",
+        "Professor Fluffy"
+      ]
+    },
+    {
+      "name": "Sir Smokey Jr",
+      "color": "Gray",
+      "pattern": "Tortoiseshell",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.259048716192101
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.2625150595056756
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.4257389731017005
+        },
+        {
+          "trait": "Curious",
+          "value": 6.444595368227511
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.84473685938037
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Mochi the Wise",
+        "Yivudi"
+      ]
+    },
+    {
+      "name": "Old Fap the Wise",
+      "color": "Gray",
+      "pattern": "Tortoiseshell",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.9890470079996705
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.30101194149231
+        },
+        {
+          "trait": "Lazy",
+          "value": 6.432694005110627
+        },
+        {
+          "trait": "Curious",
+          "value": 7.798147731520702
+        },
+        {
+          "trait": "Friendly",
+          "value": 6.047547594387225
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Yivudi",
+        "Little Neko"
+      ]
+    },
+    {
+      "name": "Little Ziy the the the Ziy the Cute",
+      "color": "Brown",
+      "pattern": "Spotted",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.250427284746303
+        },
+        {
+          "trait": "Energetic",
+          "value": 4.050200676499309
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.18200176668679
+        },
+        {
+          "trait": "Curious",
+          "value": 9.368936221912145
+        },
+        {
+          "trait": "Friendly",
+          "value": 7.211289541696817
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Toqelul",
+        "Cog the Brave"
+      ]
+    },
+    {
+      "name": "Lady Fap the the Brave",
+      "color": "Orange",
+      "pattern": "Calico",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 7.987599750780243
+        },
+        {
+          "trait": "Energetic",
+          "value": 5.987684274259655
+        },
+        {
+          "trait": "Lazy",
+          "value": 5.330754229096582
+        },
+        {
+          "trait": "Curious",
+          "value": 9.607174149957746
+        },
+        {
+          "trait": "Friendly",
+          "value": 8.170873083835296
+        }
+      ],
+      "age": 0,
+      "is_female": true,
+      "parents": [
+        "Smokey",
+        "Professor Fluffy"
+      ]
+    },
+    {
+      "name": "Little Ziy the Cute",
+      "color": "White",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.483779643906972
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.902534938949133
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.379962859747138
+        },
+        {
+          "trait": "Curious",
+          "value": 7.499037892290216
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.605946775900908
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Xudud the Wise",
+        "Little Neko"
+      ]
+    },
+    {
+      "name": "Old Whiskers the Brave",
+      "color": "White",
+      "pattern": "Tuxedo",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 8.581906627664912
+        },
+        {
+          "trait": "Energetic",
+          "value": 7.239268739907063
+        },
+        {
+          "trait": "Lazy",
+          "value": 7.1046682801586165
+        },
+        {
+          "trait": "Curious",
+          "value": 7.213775701114452
+        },
+        {
+          "trait": "Friendly",
+          "value": 4.265781882919767
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Little Neko",
+        "Xudud the Wise"
+      ]
+    },
+    {
+      "name": "Old Whiskers the Brave",
+      "color": "White",
+      "pattern": "Tabby",
+      "personalities": [
+        {
+          "trait": "Shy",
+          "value": 5.2212446844264555
+        },
+        {
+          "trait": "Energetic",
+          "value": 4.639966661157587
+        },
+        {
+          "trait": "Lazy",
+          "value": 4.5891002878409415
+        },
+        {
+          "trait": "Curious",
+          "value": 4.906150164491641
+        },
+        {
+          "trait": "Friendly",
+          "value": 5.371265195057314
+        }
+      ],
+      "age": 0,
+      "is_female": false,
+      "parents": [
+        "Lady Fap the the Fap the Wise",
+        "Xudud the Wise"
+      ]
+    }
+  ],
+  "generation": 0,
+  "year": 3
+}
