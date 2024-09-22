@@ -9,11 +9,59 @@
 """
 
 import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk, filedialog, messagebox, scrolledtext
 import random
 import json
+import hashlib
 from typing import List, Dict, Any, Optional
 import datetime
+from PIL import Image, ImageTk, ImageEnhance, ImageOps, ImageChops
+import os
+import base64
+import io
+import logging
+from logging.handlers import RotatingFileHandler
+import sys
+
+IMAGE_DATA = "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"
+
+SECRET_KEY = "DgAAAA4CAMAAACfWMssAAAAAXNSR0IArs4c6QAAAARnQU1BAACx"
+
+# 设置日志记录器
+logger = logging.getLogger('CatBreeder')
+logger.setLevel(logging.DEBUG)
+
+# 创建一个 RotatingFileHandler
+file_handler = RotatingFileHandler('run.log', maxBytes=1024 * 1024, backupCount=5)
+file_handler.setLevel(logging.DEBUG)
+
+# 创建一个格式化器
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+
+# 将处理器添加到记录器
+logger.addHandler(file_handler)
+
+
+# 捕获未处理的异常
+def handle_exception(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    logger.error("Uncaught exception", exc_info=(exc_type, exc_value, exc_traceback))
+
+
+sys.excepthook = handle_exception
+
+
+def get_image():
+    image_data = base64.b64decode(IMAGE_DATA)
+    image = Image.open(io.BytesIO(image_data))
+    return image.convert("RGBA")
+
+
+def calculate_checksum(data):
+    return hashlib.md5((data + SECRET_KEY).encode()).hexdigest()
 
 
 class Personality:
@@ -302,6 +350,84 @@ class CatBreeder:
         self.cat_food_cost = 2  # 每单位猫粮的成本
         self.food_shortage_months = 0  # 连续食物短缺的月数
         self.lifespan_limit_enabled = False
+        self.cat_generation_cost = 500  # 生成一只猫的成本
+        self.lottery_results = [
+            (50, "什么都没有"),
+            (30, "等价猫粮"),
+            (15, "返还金额"),
+            (4.9, "2倍金额"),
+            (0.09, "10倍金额"),
+            (0.001, "100倍金额")
+        ]
+        self.medal_level = 0  # 0: 无, 1: 铜, 2: 银, 3: 金
+        self.gold_medals = 0
+        self.cheat_mode = False
+
+    def buy_medal(self):
+        medal_prices = [10000, 50000, 100000]
+        if self.cheat_mode:
+            return False, "作弊模式下无法购买奖牌"
+        if self.medal_level < 3:
+            price = medal_prices[self.medal_level]
+            if self.money >= price:
+                self.money -= price
+                self.medal_level += 1
+                if self.medal_level == 3:
+                    self.gold_medals = 1  # 首次达到金牌时，设置为1
+                return True, f"成功购买{'铜' if self.medal_level == 1 else '银' if self.medal_level == 2 else '金'}奖牌"
+            else:
+                return False, "资金不足"
+        else:
+            if self.money >= 100000:
+                self.money -= 100000
+                self.gold_medals += 1
+                return True, f"成功购买金奖牌，当前拥有 {self.gold_medals} 个金奖牌"
+            else:
+                return False, "资金不足"
+
+    def cheat_money(self):
+        self.cheat_mode = True
+        self.money = float('inf')
+
+    def play_lottery(self, amount):
+        if self.money < amount:
+            return "资金不足"
+
+        self.money -= amount
+
+        roll = random.random() * 100
+        cumulative = 0
+        for chance, prize in self.lottery_results:
+            cumulative += chance
+            if roll < cumulative:
+                if prize == "什么都没有":
+                    return "很遗憾，什么都没有中"
+                elif prize == "等价猫粮":
+                    self.cat_food += amount
+                    return f"恭喜！获得 {amount} 单位猫粮"
+                elif prize == "返还金额":
+                    self.money += amount
+                    return f"恭喜！返还 {amount} 元"
+                elif prize == "2倍金额":
+                    self.money += amount * 2
+                    return f"恭喜！获得 {amount * 2} 元"
+                elif prize == "10倍金额":
+                    self.money += amount * 10
+                    return f"太棒了！获得 {amount * 10} 元"
+                elif prize == "100倍金额":
+                    self.money += amount * 100
+                    return f"难以置信！获得 {amount * 100} 元"
+
+    def generate_cat(self):
+        if self.money >= self.cat_generation_cost:
+            new_cat = self.cat_generator.generate_cat()
+            self.money -= self.cat_generation_cost
+            self.add_cat(new_cat)
+            return new_cat
+        return None
+
+    # def add_cat(self, cat):
+    #     self.cats.append(cat)
 
     def set_lifespan_limit(self, enabled):
         self.lifespan_limit_enabled = enabled
@@ -477,9 +603,6 @@ class CatBreeder:
     def get_estimated_food_consumption(self):
         return len(self.cats) * self.cat_food_consumption_rate
 
-    def cheat_money(self):
-        self.money = float('inf')
-
     def add_cat(self, cat: Cat):
         self.cats.append(cat)
 
@@ -532,7 +655,7 @@ class CatBreeder:
         return None
 
     def to_dict(self) -> Dict[str, Any]:
-        return {
+        data = {
             "current_date": self.current_date.isoformat(),
             "cats": [cat.to_dict() for cat in self.cats],
             "money": self.money,
@@ -541,27 +664,51 @@ class CatBreeder:
             "food_shortage_months": self.food_shortage_months,
             "cat_food_cost": self.cat_food_cost,
             "personality_change_rate": self.personality_change_rate,
-            "treatment_cost": self.treatment_cost
+            "treatment_cost": self.treatment_cost,
+            "medal_level": self.medal_level,
+            "gold_medals": self.gold_medals,
+            "cheat_mode": self.cheat_mode
         }
+        data_str = json.dumps(data, sort_keys=True)
+        checksum = hashlib.md5((data_str + SECRET_KEY).encode()).hexdigest()
+        return {"data": data, "checksum": checksum}
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> 'CatBreeder':
-        breeder = cls()
-        breeder.current_date = datetime.datetime.fromisoformat(data["current_date"])
-        breeder.cats = [Cat.from_dict(cat_data) for cat_data in data["cats"]]
-        breeder.money = data["money"]
-        breeder.cat_food = data["cat_food"]
-        breeder.cat_food_consumption_rate = data["cat_food_consumption_rate"]
-        breeder.food_shortage_months = data["food_shortage_months"]
-        breeder.cat_food_cost = data["cat_food_cost"]
-        breeder.personality_change_rate = data["personality_change_rate"]
-        breeder.treatment_cost = data["treatment_cost"]
-        return breeder
+    def from_dict(cls, full_data: Dict[str, Any]) -> 'CatBreeder':
+        try:
+            data = full_data["data"]
+            stored_checksum = full_data["checksum"]
+            calculated_checksum = hashlib.md5((json.dumps(data, sort_keys=True) + SECRET_KEY).encode()).hexdigest()
+
+            if stored_checksum != calculated_checksum:
+                logger.warning("Data checksum mismatch detected")
+                raise ValueError("数据已被修改，无法加载")
+
+            breeder = cls()
+            breeder.current_date = datetime.datetime.fromisoformat(data["current_date"])
+            breeder.cats = [Cat.from_dict(cat_data) for cat_data in data["cats"]]
+            breeder.money = data["money"]
+            breeder.cat_food = data["cat_food"]
+            breeder.cat_food_consumption_rate = data["cat_food_consumption_rate"]
+            breeder.food_shortage_months = data["food_shortage_months"]
+            breeder.cat_food_cost = data["cat_food_cost"]
+            breeder.personality_change_rate = data["personality_change_rate"]
+            breeder.treatment_cost = data["treatment_cost"]
+            breeder.medal_level = data.get("medal_level", 0)
+            breeder.gold_medals = data.get("gold_medals", 0)
+            breeder.cheat_mode = data.get("cheat_mode", False)
+            logger.info("CatBreeder instance successfully created from dictionary")
+            return breeder
+        except KeyError as e:
+            logger.error(f"Missing key in data dictionary: {str(e)}", exc_info=True)
+            raise ValueError(f"数据格式错误：缺少键 {str(e)}")
+        except Exception as e:
+            logger.error(f"Error creating CatBreeder instance from dictionary: {str(e)}", exc_info=True)
+            raise
 
 
 class CatBreederGUI:
     def __init__(self, master):
-        self.cat_tree = None
         self.master = master
         self.master.title("小猫家园")
         self.breeder = CatBreeder()
@@ -572,9 +719,30 @@ class CatBreederGUI:
         self.estimated_consumption_label = tk.StringVar(value="预计月消耗: 0单位")
         self.gen_count = tk.StringVar(value="生成 0 个小猫")
         self.year_count = tk.StringVar(value=f"年份: {self.breeder.current_date.year}")  # 添加这行
-
+        self.medal_photo = None
+        self.medal_button_text = tk.StringVar(value="购买铜奖牌 (10000元)")
+        self.medal_size = (40, 40)  # 设置默认大小
+        self.load_medal_image()
         self.create_widgets()
         self.update_calendar()
+
+    def load_medal_image(self):
+        try:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            # image_path = os.path.join(script_dir, "model.png")
+            #
+            # if not os.path.exists(image_path):
+            #     print(f"警告：奖牌图像文件不存在：{image_path}")
+            #     self.medal_photo = None
+            #     return
+
+            # self.original_medal_image = Image.open(image_path).convert("RGBA")
+            self.original_medal_image = get_image()
+            self.original_medal_image = self.original_medal_image.resize(self.medal_size, Image.LANCZOS)
+            self.medal_photo = ImageTk.PhotoImage(self.original_medal_image)
+        except Exception as e:
+            print(f"加载奖牌图像时出错：{str(e)}")
+            self.medal_photo = None
 
     def create_widgets(self):
         main_frame = ttk.Frame(self.master, padding="10")
@@ -593,33 +761,175 @@ class CatBreederGUI:
         main_frame.rowconfigure(0, weight=1)
 
     def create_left_frame(self, parent):
-        ttk.Label(parent, text="操作以及显示区域", font=('Helvetica', 12, 'bold')).grid(pady=10)
-        ttk.Label(parent, textvariable=self.year_count).grid(pady=5)  # 添加这行
-        ttk.Label(parent, textvariable=self.calendar_label).grid(pady=5)
-        ttk.Label(parent, textvariable=self.money_label).grid(pady=5)
-        ttk.Label(parent, textvariable=self.cat_food_label).grid(pady=5)
-        ttk.Label(parent, textvariable=self.estimated_consumption_label).grid(pady=5)
-        ttk.Label(parent, textvariable=self.gen_count).grid(pady=5)
+        # 标题
+        ttk.Label(parent, text="操作以及显示区域", font=('Helvetica', 12, 'bold')).grid(row=0, column=0, pady=10)
 
-        ttk.Button(parent, text="生成新小猫", command=self.generate_cats).grid(pady=5)
-        ttk.Button(parent, text="时间前进（1个月）", command=self.advance_one_month).grid(pady=5)
-        ttk.Button(parent, text="时间前进（3个月）", command=self.advance_three_months).grid(pady=5)
-        ttk.Button(parent, text="购买猫粮", command=self.buy_cat_food).grid(pady=5)
+        # 信息显示
+        ttk.Label(parent, textvariable=self.year_count).grid(row=1, column=0, pady=5)
+        ttk.Label(parent, textvariable=self.calendar_label).grid(row=2, column=0, pady=5)
+        ttk.Label(parent, textvariable=self.money_label).grid(row=3, column=0, pady=5)
+        ttk.Label(parent, textvariable=self.cat_food_label).grid(row=4, column=0, pady=5)
+        ttk.Label(parent, textvariable=self.estimated_consumption_label).grid(row=5, column=0, pady=5)
+        ttk.Label(parent, textvariable=self.gen_count).grid(row=6, column=0, pady=5)
 
+        # 抽奖部分
+        ttk.Label(parent, text="抽奖金额:").grid(row=7, column=0, pady=5)
+        self.lottery_amount = tk.StringVar(value="10")
+        ttk.Entry(parent, textvariable=self.lottery_amount).grid(row=8, column=0, pady=5)
+        ttk.Button(parent, text="抽奖", command=self.play_lottery).grid(row=9, column=0, pady=5)
+
+        # 主要操作按钮
+        ttk.Button(parent, text="生成新小猫（500元）", command=self.generate_cats).grid(row=10, column=0, pady=5)
+        ttk.Button(parent, text="时间前进（1个月）", command=self.advance_one_month).grid(row=11, column=0, pady=5)
+        ttk.Button(parent, text="时间前进（3个月）", command=self.advance_three_months).grid(row=12, column=0, pady=5)
+
+        # 购买猫粮
+        ttk.Button(parent, text="购买猫粮（2元）", command=self.buy_cat_food).grid(row=13, column=0, pady=5)
         self.cat_food_amount = tk.StringVar(value="0")
-        ttk.Entry(parent, textvariable=self.cat_food_amount).grid(pady=5)
+        ttk.Entry(parent, textvariable=self.cat_food_amount).grid(row=14, column=0, pady=5)
 
+        # 其他设置和操作
         ttk.Checkbutton(parent, text="启用寿命限制", variable=self.lifespan_enabled,
-                        command=self.toggle_lifespan_limit).grid(pady=5)
+                        command=self.toggle_lifespan_limit).grid(row=15, column=0, pady=5)
 
-        ttk.Label(parent, text="性格变化率:").grid(pady=5)
+        ttk.Label(parent, text="性格变化率:").grid(row=16, column=0, pady=5)
         self.personality_change_rate = tk.StringVar(value="0.1")
-        ttk.Entry(parent, textvariable=self.personality_change_rate).grid(pady=5)
+        ttk.Entry(parent, textvariable=self.personality_change_rate).grid(row=17, column=0, pady=5)
 
-        ttk.Button(parent, text="治疗所有生病的猫", command=self.heal_all_cats).grid(pady=5)
-        ttk.Button(parent, text="保存", command=self.save_state).grid(pady=5)
-        ttk.Button(parent, text="读取", command=self.load_state).grid(pady=5)
-        ttk.Button(parent, text="作弊模式", command=self.cheat_money).grid(pady=5)
+        ttk.Button(parent, text="治疗所有生病的猫", command=self.heal_all_cats).grid(row=18, column=0, pady=5)
+        ttk.Button(parent, text="保存", command=self.save_state).grid(row=19, column=0, pady=5)
+        ttk.Button(parent, text="读取", command=self.load_state).grid(row=20, column=0, pady=5)
+        ttk.Button(parent, text="游戏说明", command=self.show_instructions).grid(row=21, column=0, pady=5)
+        ttk.Button(parent, text="作弊模式", command=self.cheat_money).grid(row=22, column=0, pady=5)
+
+        # 奖牌相关
+        self.medal_count_label = ttk.Label(parent, text="")
+        self.medal_count_label.grid(row=23, column=0, pady=5)
+        self.buy_medal_button = ttk.Button(parent, textvariable=self.medal_button_text, command=self.buy_medal)
+        self.buy_medal_button.grid(row=24, column=0, sticky="ew", pady=5)
+
+        # 奖牌大小调节
+        ttk.Label(parent, text="奖牌大小:").grid(row=25, column=0, sticky="w", pady=5)
+        self.size_slider = ttk.Scale(parent, from_=20, to=100, orient=tk.HORIZONTAL, command=self.on_size_change)
+        self.size_slider.set(40)  # 设置初始值
+        self.size_slider.grid(row=26, column=0, sticky="ew", pady=5)
+
+    def on_size_change(self, value):
+        size = int(float(value))
+        self.set_medal_size((size, size))
+
+    def update_medal_button_text(self):
+        medal_names = ["铜", "银", "金"]
+        medal_prices = [10000, 50000, 100000]
+        if self.breeder.medal_level < 3:
+            next_medal = medal_names[self.breeder.medal_level]
+            price = medal_prices[self.breeder.medal_level]
+            new_text = f"购买{next_medal}奖牌 ({price}元)"
+        else:
+            new_text = f"购买金奖牌 (100000元) 现有{self.breeder.gold_medals}个"
+        self.medal_button_text.set(new_text)
+        # print(f"Updated button text to: {new_text}")  # 保留这行用于调试
+
+    def update_medal_display(self):
+        if not hasattr(self, 'original_medal_image') or self.original_medal_image is None:
+            return
+
+        colors = [(128, 128, 128), (205, 127, 50), (192, 192, 192), (255, 215, 0)]  # RGB values
+        color = colors[self.breeder.medal_level]
+
+        # 创建一个彩色图层
+        color_layer = Image.new('RGBA', self.medal_size, color + (255,))
+
+        # 将原始图像与彩色图层混合
+        colored_image = ImageChops.multiply(self.original_medal_image, color_layer)
+
+        self.medal_photo = ImageTk.PhotoImage(colored_image)
+        if hasattr(self, 'medal_label'):
+            self.medal_label.configure(image=self.medal_photo)
+
+        if self.breeder.medal_level == 3:
+            self.medal_count_label.configure(text=f"x{self.breeder.gold_medals}")
+        else:
+            self.medal_count_label.configure(text="")
+
+        self.update_medal_button_text()
+        # 在方法结束时添加这行
+        self.master.update_idletasks()  # 强制更新UI
+
+    def set_medal_size(self, size):
+        """设置奖牌大小并重新加载图像"""
+        self.medal_size = size
+        self.load_medal_image()
+        self.update_medal_display()
+
+    def buy_medal(self):
+        success, message = self.breeder.buy_medal()
+        if success:
+            messagebox.showinfo("购买成功", message)
+            self.update_medal_display()
+            self.update_economy_labels()
+            self.update_medal_button_text()  # 确保这里调用更新按钮文字
+        else:
+            messagebox.showerror("购买失败", message)
+
+    def play_lottery(self):
+        try:
+            amount = int(self.lottery_amount.get())
+            if amount <= 0:
+                messagebox.showerror("错误", "请输入正数金额")
+                return
+        except ValueError:
+            messagebox.showerror("错误", "请输入有效的数字")
+            return
+        result = self.breeder.play_lottery(amount)
+        messagebox.showinfo("抽奖结果", result)
+        self.update_economy_labels()
+
+    def show_instructions(self):
+        instruction_window = tk.Toplevel(self.master)
+        instruction_window.title("游戏说明")
+        instruction_window.geometry("600x400")
+
+        instruction_text = scrolledtext.ScrolledText(instruction_window, wrap=tk.WORD, width=70, height=20)
+        instruction_text.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+
+        instructions = """
+        猫咪繁殖器游戏说明：
+
+        1. 基本玩法：
+           - 生成新猫咪：每只新猫咪需要花费500元。
+           - 时间推进：可以选择推进1个月或3个月，猫咪会随时间成长。
+           - 猫粮管理：每只猫每月消耗一定量的猫粮，注意及时补充。
+
+        2. 猫咪属性：
+           - 猫咪有名字、性别、年龄、健康状态、性格等属性。
+           - 猫咪到达一定年龄后可以繁殖。
+           - 猫咪会生病，需要及时治疗。
+
+        3. 经济系统：
+           - 初始资金为5000元。
+           - 可以通过出售猫咪赚取资金。
+           - 需要购买猫粮和支付治疗费用。
+
+        4. 寿命系统：
+           - 可以选择是否启用寿命限制。
+           - 启用后，猫咪会在15-25年后离世。
+
+        5. 抽奖系统：
+           - 可以投入一定金额参与抽奖。
+           - 奖励包括：返还金额、获得猫粮、倍数奖励等。
+
+        6. 游戏目标：
+           - 繁衍更多的猫咪。
+           - 保持猫咪健康。
+           - 管理好经济，不要破产。
+           - 尽可能的购买奖牌。
+
+        祝您玩得开心！
+        """
+
+        instruction_text.insert(tk.END, instructions)
+        instruction_text.config(state=tk.DISABLED)
 
     def toggle_lifespan_limit(self):
         self.breeder.set_lifespan_limit(self.lifespan_enabled.get())
@@ -681,33 +991,146 @@ class CatBreederGUI:
 
         messagebox.showinfo("时间前进", message)
 
+    # def create_right_frame(self, parent):
+    #     # 创建一个框架来容纳标题和奖牌
+    #     header_frame = ttk.Frame(parent)
+    #     header_frame.grid(row=0, column=0, sticky="ew", pady=(10, 5))
+    #     header_frame.columnconfigure(1, weight=1)  # 让标题占据更多空间
+    #     # 创建一个框架来容纳奖牌和计数
+    #     medal_frame = ttk.Frame(header_frame)
+    #     medal_frame.grid(row=0, column=1, sticky="e")
+    #
+    #     # 在medal_frame中添加奖牌显示
+    #     if self.medal_photo:
+    #         self.medal_label = ttk.Label(medal_frame, image=self.medal_photo)
+    #         self.medal_label.pack(side=tk.LEFT, padx=(0, 5))
+    #     else:
+    #         self.medal_label = ttk.Label(medal_frame, text="奖牌")
+    #         self.medal_label.pack(side=tk.LEFT, padx=(0, 5))
+    #
+    #     self.medal_count_label = ttk.Label(medal_frame, text="")
+    #     self.medal_count_label.pack(side=tk.LEFT)
+    #
+    #     ttk.Label(parent, text="小猫园地", font=('Helvetica', 12, 'bold')).grid(row=0, column=0, pady=10)
+    #     ttk.Label(parent, text="双击猫咪,卖给有缘人~", font=('Helvetica', 10)).grid(row=1, column=0, pady=5)
+    #     # 修改Treeview的创建，使其支持多选
+    #     self.cat_tree = ttk.Treeview(parent, columns=(
+    #     '名字', '性别', '年龄', '健康状态', '价格', '性格', '叫声', '颜色', '亲代'),
+    #                                  show='headings', selectmode='extended')
+    #
+    #     for col in self.cat_tree['columns']:
+    #         self.cat_tree.heading(col, text=col, command=lambda _col=col: self.treeview_sort_column(_col, False))
+    #     self.cat_tree.heading('名字', text='名字')
+    #     self.cat_tree.heading('性别', text='性别')
+    #     self.cat_tree.heading('年龄', text='年龄')
+    #     self.cat_tree.heading('健康状态', text='健康状态')
+    #     self.cat_tree.heading('价格', text='价格')
+    #     self.cat_tree.heading('性格', text='性格')
+    #     self.cat_tree.heading('叫声', text='叫声')
+    #     self.cat_tree.heading('颜色', text='颜色')
+    #     self.cat_tree.heading('亲代', text='亲代')
+    #     self.cat_tree.grid(row=2, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+    #     self.cat_tree.bind("<Control-a>", self.select_all_cats)
+    #     self.cat_tree.bind("<Control-A>", self.select_all_cats)  # 大写A
+    #     self.cat_tree.bind("<Control-d>", self.deselect_all_cats)
+    #     self.cat_tree.bind("<Control-D>", self.deselect_all_cats)  # 大写D
+    #
+    #     # 添加批量卖出按钮
+    #     self.batch_sell_button = ttk.Button(parent, text="批量卖出", command=self.batch_sell_cats)
+    #     self.batch_sell_button.grid(row=2, column=0, sticky="ew", pady=5)
+    #
+    #     scrollbar = ttk.Scrollbar(parent, orient=tk.VERTICAL, command=self.cat_tree.yview)
+    #     scrollbar.grid(row=2, column=1, sticky=(tk.N, tk.S))
+    #     self.cat_tree.configure(yscrollcommand=scrollbar.set)
+    #
+    #     self.cat_tree.bind("<Double-1>", self.on_cat_double_click)
+    #
+    #     parent.columnconfigure(0, weight=1)
+    #     parent.rowconfigure(2, weight=1)
+    #     self.selection_info = ttk.Label(parent, text="已选择: 0 只猫咪, 总价值: 0 元")
+    #     self.selection_info.grid(row=3, column=0, sticky="ew", pady=5)
+    #
+    #     self.cat_tree.bind("<<TreeviewSelect>>", self.update_selection_info)
     def create_right_frame(self, parent):
-        ttk.Label(parent, text="小猫园地", font=('Helvetica', 12, 'bold')).grid(row=0, column=0, pady=10)
-        ttk.Label(parent, text="双击猫咪,卖给有缘人~", font=('Helvetica', 10)).grid(row=1, column=0, pady=5)
+        # 创建一个框架来容纳标题和奖牌
+        header_frame = ttk.Frame(parent)
+        header_frame.grid(row=0, column=0, sticky="ew", pady=(10, 5))
+        header_frame.columnconfigure(1, weight=1)  # 让标题占据更多空间
+
+        # 添加标题
+        ttk.Label(header_frame, text="小猫园地", font=('Helvetica', 12, 'bold')).grid(row=0, column=0, sticky="w")
+
+        # 创建一个框架来容纳奖牌和计数
+        medal_frame = ttk.Frame(header_frame)
+        medal_frame.grid(row=0, column=1, sticky="e")
+
+        # 在medal_frame中添加奖牌显示
+        if self.medal_photo:
+            self.medal_label = ttk.Label(medal_frame, image=self.medal_photo)
+            self.medal_label.pack(side=tk.LEFT, padx=(0, 5))
+        else:
+            self.medal_label = ttk.Label(medal_frame, text="奖牌")
+            self.medal_label.pack(side=tk.LEFT, padx=(0, 5))
+
+        self.medal_count_label = ttk.Label(medal_frame, text="")
+        self.medal_count_label.pack(side=tk.LEFT)
+
+        # 创建Treeview来显示猫咪列表
         self.cat_tree = ttk.Treeview(parent, columns=(
-            '名字', '性别', '年龄', '健康状态', '价格', '性格', '叫声', '颜色', '亲代'), show='headings')
+            '名字', '性别', '年龄', '健康状态', '价格', '性格', '叫声', '颜色', '亲代'),
+                                     show='headings', selectmode='extended')
 
-        for col in self.cat_tree['columns']:
+        # 设置列标题、宽度和排序功能
+        for col in ('名字', '性别', '年龄', '健康状态', '价格', '性格', '叫声', '颜色', '亲代'):
             self.cat_tree.heading(col, text=col, command=lambda _col=col: self.treeview_sort_column(_col, False))
-        self.cat_tree.heading('名字', text='名字')
-        self.cat_tree.heading('性别', text='性别')
-        self.cat_tree.heading('年龄', text='年龄')
-        self.cat_tree.heading('健康状态', text='健康状态')
-        self.cat_tree.heading('价格', text='价格')
-        self.cat_tree.heading('性格', text='性格')
-        self.cat_tree.heading('叫声', text='叫声')
-        self.cat_tree.heading('颜色', text='颜色')
-        self.cat_tree.heading('亲代', text='亲代')
-        self.cat_tree.grid(row=2, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+            self.cat_tree.column(col, width=100)  # 可以根据需要调整宽度
 
+        self.cat_tree.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+
+        # 添加滚动条
         scrollbar = ttk.Scrollbar(parent, orient=tk.VERTICAL, command=self.cat_tree.yview)
-        scrollbar.grid(row=2, column=1, sticky=(tk.N, tk.S))
+        scrollbar.grid(row=1, column=1, sticky=(tk.N, tk.S))
         self.cat_tree.configure(yscrollcommand=scrollbar.set)
 
+        # 创建底部框架
+        bottom_frame = ttk.Frame(parent)
+        bottom_frame.grid(row=2, column=0, columnspan=2, sticky="ew", pady=10)
+        bottom_frame.columnconfigure(1, weight=1)  # 让选择信息标签占据更多空间
+
+        # 添加批量卖出按钮
+        self.batch_sell_button = ttk.Button(bottom_frame, text="批量卖出", command=self.batch_sell_cats)
+        self.batch_sell_button.grid(row=0, column=0, padx=(0, 10))
+
+        # 添加选择信息标签
+        self.selection_info = ttk.Label(bottom_frame, text="已选择: 0 只猫咪, 总价值: 0 元")
+        self.selection_info.grid(row=0, column=1, sticky="w")
+
+        # 绑定选择事件
+        self.cat_tree.bind("<<TreeviewSelect>>", self.update_selection_info)
         self.cat_tree.bind("<Double-1>", self.on_cat_double_click)
 
+        # 添加选择快捷键
+        self.cat_tree.bind("<Control-a>", self.select_all_cats)
+        self.cat_tree.bind("<Control-A>", self.select_all_cats)  # 大写A
+        self.cat_tree.bind("<Control-d>", self.deselect_all_cats)
+        self.cat_tree.bind("<Control-D>", self.deselect_all_cats)  # 大写D
+
+        # 配置grid权重
         parent.columnconfigure(0, weight=1)
-        parent.rowconfigure(2, weight=1)
+        parent.rowconfigure(1, weight=1)
+
+    def update_selection_info(self, event=None):
+        selected_items = self.cat_tree.selection()
+        total_price = sum(self.breeder.calculate_cat_price(cat) for cat in self.breeder.cats
+                          if cat.name in [self.cat_tree.item(item, "values")[0] for item in selected_items])
+        self.selection_info.config(text=f"已选择: {len(selected_items)} 只猫咪, 总价值: {total_price} 元")
+
+    def select_all_cats(self, event):
+        for item in self.cat_tree.get_children():
+            self.cat_tree.selection_add(item)
+
+    def deselect_all_cats(self, event):
+        self.cat_tree.selection_remove(self.cat_tree.get_children())
 
     def update_calendar(self):
         current_date = self.breeder.current_date
@@ -715,14 +1138,40 @@ class CatBreederGUI:
 
     def treeview_sort_column(self, col, reverse):
         l = [(self.cat_tree.set(k, col), k) for k in self.cat_tree.get_children('')]
-        l.sort(reverse=reverse)
+        l.sort(key=lambda t: self.sort_key(t[0]), reverse=reverse)
 
-        # 重新排序树
+        # 重新排序
         for index, (val, k) in enumerate(l):
             self.cat_tree.move(k, '', index)
 
-        # 反转排序顺序以供下次点击
+        # 反转排序顺序
         self.cat_tree.heading(col, command=lambda: self.treeview_sort_column(col, not reverse))
+
+    def batch_sell_cats(self):
+        selected_items = self.cat_tree.selection()
+        if not selected_items:
+            messagebox.showinfo("提示", "请先选择要卖出的猫咪")
+            return
+
+        cats_to_sell = []
+        total_price = 0
+
+        for item in selected_items:
+            cat_name = self.cat_tree.item(item, "values")[0]
+            cat = next((cat for cat in self.breeder.cats if cat.name == cat_name), None)
+            if cat:
+                price = self.breeder.calculate_cat_price(cat)
+                total_price += price
+                cats_to_sell.append(cat)
+
+        if messagebox.askyesno("确认批量卖出",
+                               f"确定要卖出选中的 {len(cats_to_sell)} 只猫咪吗？\n总价: {total_price} 元"):
+            # 使用列表推导式更新 self.breeder.cats
+            self.breeder.cats = [cat for cat in self.breeder.cats if cat not in cats_to_sell]
+            self.breeder.money += total_price
+            self.update_cat_list()
+            self.update_economy_labels()
+            messagebox.showinfo("批量卖出成功", f"成功卖出 {len(cats_to_sell)} 只猫咪，获得 {total_price} 元")
 
     def on_cat_double_click(self, event):
         selected_items = self.cat_tree.selection()
@@ -775,7 +1224,8 @@ class CatBreederGUI:
     def cheat_money(self):
         self.breeder.cheat_money()
         self.update_economy_labels()
-        messagebox.showinfo("作弊模式", "已启用无限金钱")
+        self.buy_medal_button.configure(state="disabled")
+        messagebox.showinfo("作弊模式", "已启用无限金钱，但无法购买奖牌")
 
     def update_economy_labels(self):
         self.money_label.set(f"资金: {self.breeder.money}元")
@@ -783,13 +1233,18 @@ class CatBreederGUI:
         self.year_count.set(f"年份: {self.breeder.current_date.year}")  # 添加这行
         estimated_consumption = self.breeder.get_estimated_food_consumption()
         self.estimated_consumption_label.set(f"预计月消耗: {estimated_consumption}单位")
-        self.gen_count.set(f"生成 {len(self.breeder.cats)} 个小猫")
+        self.gen_count.set(f"现有 {len(self.breeder.cats)} 个小猫")
+        self.update_medal_button_text()  # 在这里也添加更新调用
 
     def generate_cats(self):
-        new_cat = self.breeder.cat_generator.generate_cat()
-        self.breeder.add_cat(new_cat)
-        self.update_cat_list()
-        self.update_economy_labels()
+        new_cat = self.breeder.generate_cat()
+        if new_cat:
+            self.update_cat_list()
+            self.update_economy_labels()
+            messagebox.showinfo("新猫咪",
+                                f"成功生成了一只新猫咪：{new_cat.name}，花费了 {self.breeder.cat_generation_cost} 元")
+        else:
+            messagebox.showerror("生成失败", f"资金不足，无法生成新猫咪。需要 {self.breeder.cat_generation_cost} 元")
 
     def breed_cats(self):
         new_cats = self.breeder.breed_cats()
@@ -847,18 +1302,39 @@ class CatBreederGUI:
 
         self.update_cat_list()
 
+    def sort_key(self, value):
+        # 处理不同类型的值
+        if value.endswith('元'):  # 价格
+            return float(value[:-1])
+        elif '岁' in value or '月' in value:  # 年龄
+            return self.parse_age(value)
+        elif value in ['雄性', '雌性']:  # 性别
+            return value
+        else:  # 其他情况，按字符串处理
+            return value
+
+    def parse_age(self, age_str):
+        total_months = 0
+        if '岁' in age_str:
+            years, months = age_str.split('岁')
+            total_months += int(years) * 12
+            if '个月' in months:
+                total_months += int(months.split('个月')[0])
+        elif '个月' in age_str:
+            total_months = int(age_str.split('个月')[0])
+        return total_months
+
     def update_cat_list(self):
         self.cat_tree.delete(*self.cat_tree.get_children())
         for cat in self.breeder.cats:
             health_status = "生病" if cat.is_sick else "健康"
             price = self.breeder.calculate_cat_price(cat)
             personalities = ', '.join([f"{p.trait}({p.value:.1f})" for p in cat.personalities])
-            neutered_status = "已绝育" if cat.is_neutered else "未绝育"
             self.cat_tree.insert('', 'end', values=(
                 cat.name,
                 "雌性" if cat.is_female else "雄性",
                 cat.age_display(),
-                f"{health_status}/{neutered_status}",
+                health_status,
                 f"{price}元",
                 personalities,
                 cat.meow(),
@@ -879,20 +1355,42 @@ class CatBreederGUI:
     def load_state(self):
         file_path = filedialog.askopenfilename(filetypes=[("JSON files", "*.json")])
         if file_path:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            self.breeder = CatBreeder.from_dict(data)
-            self.update_cat_list()
-            self.update_economy_labels()
-            self.update_calendar()
-            messagebox.showinfo("读取成功", "已加载保存的状态")
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    full_data = json.load(f)
+                self.breeder = CatBreeder.from_dict(full_data)
+                self.update_cat_list()
+                self.update_economy_labels()
+                self.update_calendar()
+                self.update_medal_display()
+                messagebox.showinfo("读取成功", "已加载保存的状态")
+                logger.info(f"State loaded successfully from {file_path}")
+            except ValueError as e:
+                error_msg = f"数据验证错误: {str(e)}"
+                messagebox.showerror("错误", error_msg)
+                logger.error(error_msg, exc_info=True)
+            except json.JSONDecodeError:
+                error_msg = "无法解析保存的数据"
+                messagebox.showerror("错误", error_msg)
+                logger.error(error_msg, exc_info=True)
+            except Exception as e:
+                error_msg = f"加载状态时发生错误: {str(e)}"
+                messagebox.showerror("错误", error_msg)
+                logger.error(error_msg, exc_info=True)
 
     def save_state(self):
         file_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
         if file_path:
-            with open(file_path, 'w', encoding='utf-8') as f:
-                json.dump(self.breeder.to_dict(), f, ensure_ascii=False, indent=2)
-            messagebox.showinfo("保存成功", "当前状态已保存")
+            try:
+                data = self.breeder.to_dict()
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+                messagebox.showinfo("保存成功", "当前状态已保存")
+                logger.info(f"State saved successfully to {file_path}")
+            except Exception as e:
+                error_msg = f"保存状态时发生错误: {str(e)}"
+                messagebox.showerror("保存失败", error_msg)
+                logger.error(error_msg, exc_info=True)
 
 
 if __name__ == "__main__":
