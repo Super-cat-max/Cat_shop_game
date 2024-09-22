@@ -991,66 +991,6 @@ class CatBreederGUI:
 
         messagebox.showinfo("时间前进", message)
 
-    # def create_right_frame(self, parent):
-    #     # 创建一个框架来容纳标题和奖牌
-    #     header_frame = ttk.Frame(parent)
-    #     header_frame.grid(row=0, column=0, sticky="ew", pady=(10, 5))
-    #     header_frame.columnconfigure(1, weight=1)  # 让标题占据更多空间
-    #     # 创建一个框架来容纳奖牌和计数
-    #     medal_frame = ttk.Frame(header_frame)
-    #     medal_frame.grid(row=0, column=1, sticky="e")
-    #
-    #     # 在medal_frame中添加奖牌显示
-    #     if self.medal_photo:
-    #         self.medal_label = ttk.Label(medal_frame, image=self.medal_photo)
-    #         self.medal_label.pack(side=tk.LEFT, padx=(0, 5))
-    #     else:
-    #         self.medal_label = ttk.Label(medal_frame, text="奖牌")
-    #         self.medal_label.pack(side=tk.LEFT, padx=(0, 5))
-    #
-    #     self.medal_count_label = ttk.Label(medal_frame, text="")
-    #     self.medal_count_label.pack(side=tk.LEFT)
-    #
-    #     ttk.Label(parent, text="小猫园地", font=('Helvetica', 12, 'bold')).grid(row=0, column=0, pady=10)
-    #     ttk.Label(parent, text="双击猫咪,卖给有缘人~", font=('Helvetica', 10)).grid(row=1, column=0, pady=5)
-    #     # 修改Treeview的创建，使其支持多选
-    #     self.cat_tree = ttk.Treeview(parent, columns=(
-    #     '名字', '性别', '年龄', '健康状态', '价格', '性格', '叫声', '颜色', '亲代'),
-    #                                  show='headings', selectmode='extended')
-    #
-    #     for col in self.cat_tree['columns']:
-    #         self.cat_tree.heading(col, text=col, command=lambda _col=col: self.treeview_sort_column(_col, False))
-    #     self.cat_tree.heading('名字', text='名字')
-    #     self.cat_tree.heading('性别', text='性别')
-    #     self.cat_tree.heading('年龄', text='年龄')
-    #     self.cat_tree.heading('健康状态', text='健康状态')
-    #     self.cat_tree.heading('价格', text='价格')
-    #     self.cat_tree.heading('性格', text='性格')
-    #     self.cat_tree.heading('叫声', text='叫声')
-    #     self.cat_tree.heading('颜色', text='颜色')
-    #     self.cat_tree.heading('亲代', text='亲代')
-    #     self.cat_tree.grid(row=2, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
-    #     self.cat_tree.bind("<Control-a>", self.select_all_cats)
-    #     self.cat_tree.bind("<Control-A>", self.select_all_cats)  # 大写A
-    #     self.cat_tree.bind("<Control-d>", self.deselect_all_cats)
-    #     self.cat_tree.bind("<Control-D>", self.deselect_all_cats)  # 大写D
-    #
-    #     # 添加批量卖出按钮
-    #     self.batch_sell_button = ttk.Button(parent, text="批量卖出", command=self.batch_sell_cats)
-    #     self.batch_sell_button.grid(row=2, column=0, sticky="ew", pady=5)
-    #
-    #     scrollbar = ttk.Scrollbar(parent, orient=tk.VERTICAL, command=self.cat_tree.yview)
-    #     scrollbar.grid(row=2, column=1, sticky=(tk.N, tk.S))
-    #     self.cat_tree.configure(yscrollcommand=scrollbar.set)
-    #
-    #     self.cat_tree.bind("<Double-1>", self.on_cat_double_click)
-    #
-    #     parent.columnconfigure(0, weight=1)
-    #     parent.rowconfigure(2, weight=1)
-    #     self.selection_info = ttk.Label(parent, text="已选择: 0 只猫咪, 总价值: 0 元")
-    #     self.selection_info.grid(row=3, column=0, sticky="ew", pady=5)
-    #
-    #     self.cat_tree.bind("<<TreeviewSelect>>", self.update_selection_info)
     def create_right_frame(self, parent):
         # 创建一个框架来容纳标题和奖牌
         header_frame = ttk.Frame(parent)
